@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>ListView</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        
+    </head>
+
+    <body>
+
+
+<h1 style="padding-bottom: 30px">list of posts</h1>
+
+<h3><a href="{% url 'add_product' %}">Add_Product</a></h3>
+
+
+{% for i in object_list %}
+<div style="margin-bottom: 40px">
+
+   
+        <div class="row">
+            <div class="col-md"><h4>{{i.Product_Name}}</h4></div>
+            <div class="col-md"><a href="{% url 'product_update' i.id %}">update</a></div>
+          </div>
+
+</div>
+
+{% endfor %}
+
+
+
+    </body>
+
+</html>
+
+
+
+
+

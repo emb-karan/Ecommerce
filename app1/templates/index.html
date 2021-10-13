@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+ {% block 'contact' %}   
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3> <h1> Wel come new User </h1></h3>
+              </div>
+
+      <div class="col-sm-4">
+        
+            <div><button type="button" class="btn btn-outline-success">
+                <a href="{% url 'profile' %}" style="text-decoration: none">Profile</a>
+            </button>
+            </div>
+
+           
+      </div>
+
+      <br> <br>
+      <button type="button" class="btn btn-outline-success logout">
+        <a href="{% url 'next_user' %}" style="text-decoration: none">Profile Details</Details></a>
+    </button>
+
+
+      <div class="col-sm-4">
+        <h3>
+              <button type="button" class="btn btn-outline-success logout">
+                <a href="{% url 'logout_user' %}" style="text-decoration: none">Logout</a>
+            </button>
+        </h3>
+        
+      </div>
+    </div>
+    
+    <button type="button" class="btn btn-outline-success logout">
+                <a href="{% url 'next_user' %}" style="text-decoration: none">Profile Details</Details></a>
+            </button>
+  
+    <button type="button" class="btn btn-outline-success logout">
+      <a href="{% url 'add_product' %}" style="text-decoration: none">Add Product </a>
+    </button>
+    
+    <button type="button" class="btn btn-outline-success logout">
+      <a href="{% url 'add_product' %}" style="text-decoration: none">Add models Form  </a>
+    </button>
+
+ <h1>  Product Added </h1>  
+
+ 
+ <div class="container">
+     {% for i in prod1 %}
+     
+       
+        <div class="row">
+          <div class="col-*-*">    <h1>  {{   i.Product_Name }} </h1>  </div>
+          <div class="col-*-*">  <h1>   {{   i.Product_No }} </h1>
+          </div>
+          <div class="col-*-*">   <h1>  {{   i.Product_Price }}</h1></div>
+        </div>
+     {% endfor %}
+      
+    
+
+{% endblock %} 
+   
+{% if user.is_authenticated %}
+<p>Welcome, {{ user.get_username }}<br> Name : {{ user.get_full_name }} {{ user.get_first_name }}. Thanks for logging in.</p>
+{% else %}
+<p>Welcome, new user. Please log in.</p>
+{% endif %}
+
+
+    
+</body>
+</html>

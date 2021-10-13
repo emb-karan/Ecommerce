@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello I am a profile page </h1>
+
+    <form method="post" action="{% url 'profile' %}"  >
+        {% csrf_token %}
+        
+        <label for="fname">Nick_Name</label><br>
+        <input type="text" id="fname" name="nick_name" ><br>
+        <label for="lname">Addhar_no</label><br>
+        <input type="text" id="lnasme" name="addhar_no" ><br><br>
+        <label for="birthdaytime">Birthday (date and time):</label>
+        <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

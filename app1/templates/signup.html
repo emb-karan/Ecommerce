@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="" onsubmit=" return validation() " >
+        {% csrf_token %}
+        <div id="error_message">  </div>
+        
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fn" ><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="ln" ><br><br>
+        <label for="email">Email</label><br>
+        <input type="text" id="email" name="email" ><br><br>
+      
+        <label for="password">Password</label><br>
+        <input type="text" id="password" name="pwd" ><br><br>
+        <label for="mobile">Mobile</label><br>
+        <input type="text" id="mobile" name="mobile" ><br><br>
+        <div>
+            <label for="role">Select Role:</label><br><br> 
+             <select name="role" id="role">
+                            <option value="seller">SELLER</option>
+                            <option value="buyer">BUYER</option>
+
+                         </select>>
+
+
+        </div><br>
+
+        <input type="submit" value="Submit">
+    </form>
+ 
+    <script>
+        function validation(){
+            firstName = document.getElementById("fname").value
+            lastName = document.getElementById("lname").value
+            email = document.getElementById('email').value
+
+            password = document.getElementById('password').value
+
+            console.log(firstName,lastName,email,password)
+
+            var error_message = document.getElementById("error_message")
+
+            var text = error_message.style.padding = "10";
+
+            if (firstName == null || firstName == "", lastName == null || lastName == "" , email == null || email == "" ) {
+                
+                text = "Please Fill The fill Required Field  "
+                error_message.innerHTML = text;
+
+                return false;
+            }
+
+            
+            if (firstName.length > 200){
+                text = "Product_Name Not More than 50 character "
+                error_message.innerHTML = text;
+                return false;
+            }
+            if (lastName.length > 200){
+                text = "Product_Name Not More than 50 character "
+                error_message.innerHTML = text;
+                return false;
+            }
+
+            
+
+            if (email.indexOf("@") == -1 || email.length<6){
+                text = "You have entered an invalid email address!"
+                error_message.innerHTML = text;
+                return false;
+            }
+
+            var passw=  /^[A-Za-z]\w{7,14}$/;
+
+
+            if (password.match(passw)){
+                text = "Password should be 7 to 16 characters which contain only characters, numeric digits, underscore and first character  "
+                error_message.innerHTML = text;
+                return false;
+            }
+        }
+    </script>
+
+
+    
+
+</body>
+</html>

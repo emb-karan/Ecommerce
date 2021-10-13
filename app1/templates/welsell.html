@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>i am a seller</h1> <br> <br> <br> 
+    <div><button type="button" class="btn btn-outline-success">
+        <a href="{% url 'profile' %}" style="text-decoration: none">Profile</a>
+    </button> <br> <br> <br> 
+    <button type="button" class="btn btn-outline-success logout">
+        <a href="{% url 'next_user' %}" style="text-decoration: none">Profile Details</Details></a>
+    </button><br> <br>
+    <h3><a href="{% url 'add_product' %}">Add_Product</a></h3><br> <br>
+    <button type="button" class="btn btn-outline-success logout">
+        <a href="{% url 'logout_user' %}" style="text-decoration: none">Logout</a>
+    </button>
+
+    <div class="row">
+        {% for i in product %}  
+         
+            <div class="card col-sm-4" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.Product_Name | upper}}</div>
+                <div class="card-body">{{ i.Product_No }}</div>
+                <div class="card-body">{{ i.Product_Price }}</div> 
+                <div class="card-footer">{{ i.Descreption }}</div>
+                <div class="card-footer">{{i.comment}}</div>
+                <a href="{% url 'product_update' i.id %}">UPDATE IT </a>
+                <a href="{% url 'produst_delete' i.id %}">DELETE IT  </a>
+                
+
+
+              </div>   
+           
+        {% endfor %}
+
+    </div>
+    
+</body>
+</html>

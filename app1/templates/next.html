@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+   
+
+    
+        {% block 'contact' %}   
+        <button type="button" class="btn btn-outline-success logout">
+            <a href="/" style="text-decoration: none">Home</a>
+        </button>
+        <form method="post">
+            {% csrf_token %}
+                {% for i in upObj %}
+                <!-- <button> <a href="/buyer/profile_user/">Complete Your Profile</a> </button>	 -->
+                
+                    <div class="row ">
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">Nick name</p>
+                            <h6 class="text-muted">{{i.Nnikename | upper}}</h6>	
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">Adhaar_card_No</p>
+                            <h6 class="text-muted">{{i.Adhaar_card_No  | upper}}</h6>    
+                        </div>                                    
+    
+                    </div>
+                    <h4 class="mt-3"></h4>
+                    <hr class="bg-primary">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">Date Of Birth  and Time  </p>
+                            <h6 class="text-muted">{{i.Birth_Date}}</h6>	
+                        </div>
+                    </div>
+    
+                {% endfor %}		
+            </form>
+        {% endblock %} 

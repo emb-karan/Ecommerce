@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hii i am a buyer</h1> <br> <br> 
+
+    <button type="button" class="btn btn-outline-success logout">
+        <a href="{% url 'logout_user' %}" style="text-decoration: none">Logout</a>
+    </button>
+
+    <button type="button" class="btn btn-outline-success">
+        <a href="{% url 'order_see' %}" style="text-decoration: none">Order details</a>
+    </button> 
+
+
+    <div class="row">
+        {% for i in product %}  
+        <form action="{% url 'cart_save1' %}" method="POST" >         
+           {%  csrf_token %} 
+            <div class="card col-sm" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.Product_Name | upper}}</div>
+               
+                <div class="card-body">{{ i.Product_No }}</div>
+                
+                <div class="card-body">{{ i.Product_Price }}</div> 
+                
+                <div class="card-footer">{{ i.Descreption }}</div>
+                
+              
+                <textarea rows="4" cols="50" name="comment" form="usrform"></textarea>  
+
+
+                <input type="submit" value="Add To Cart" >
+
+              </div> 
+
+
+         
+  
+           
+     
+    </div>
+    <input type="hidden" id="custId" name="Product_Name" value="{{ i.Product_Name | upper}}">
+    <input type="hidden" id="custId" name="Product_Price" value="{ i.Product_Price }}">
+    <input type="hidden" id="custId" name="Product_No" value="{{ i.Product_No }}">
+    <input type="hidden" id="custId" name="Descreption" value="{{ i.Descreption }}">
+    <input type="hidden" id="custId" name="id" value="{{ i.id }}">
+   
+</form>
+    {% endfor %}
+
+    
+</body>
+</html>

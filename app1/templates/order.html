@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello every one i am a order . html</h1>
+
+    {% for i in upObj %}  
+    <div class="row">
+        
+         
+            <div class="card col-sm-4" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.product_name | upper}}</div>
+                <div class="card-body">{{ i.order_price }}</div>
+                <div class="card-footer">{{i.comment}}</div>
+              </div>
+
+    </div>
+    {% endfor %}       
+       
+    
+</body>
+</html>

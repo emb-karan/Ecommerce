@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hi i am a  order view .html  order view </h1>
+     
+  
+    {% for i in orderl %}  
+    <div class="row">
+        
+         
+            <div class="card col-sm-4" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.order_date}}</div>
+            </div>
+            <div class="card col-sm-4" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.cart.product_name}}</div>
+            </div>
+
+            <div class="card col-sm-4" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.cart.order_price}}</div>
+            </div>
+
+
+            <div class="card col-sm-4" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.cart.descreption}}</div>
+            </div>
+    </div>
+    <hr>
+    {% endfor %}       
+    
+</body>
+</html>
+orderl
