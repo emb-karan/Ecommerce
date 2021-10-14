@@ -180,21 +180,6 @@ def cart_save(request):
         pprice = request.POST.get('Product_Price')
         desc = request.POST.get('Descreption')
         pid = request.POST.get('id')
-        a=product.objects.filter(id=pid)
-        print(a)
-        for i in a:
-            a=i.quantity
-            print(i.quantity)
-            b=Cart.objects.all()
-            for x in b:
-                c=x.id
-                print(c)
-                d=Order.objects.filter(cart=c)
-
-                
-
-            # order = Order.objects.filter(cart_id=)
-
 
 
         # print(" hello i am a Quantity   ",a.quantity)
@@ -219,16 +204,14 @@ def delcart(request,id):
     # return redirect(reverse("buyer_home"))
 
 def order_now(request,cart_id):
-    print("i am a cart ID", cart_id )
-    order = Order(cart_id = cart_id  ,user_id =request.user.id  )
-    order.save()
-
-
-    upObj = Cart.objects.filter(id=cart_id)
-    userD = User.objects.filter(id = request.user.id  )
-
-
-    return render(request,"order.html" ,{'upObj':upObj,'userD':userD})
+    product_instance = Cart.objects.get(id = cart_id).product
+    product_order_current_count = Order.objects.filter(	product=product).count()
+	
+    if product_instance.quantity > product_order_current_count:
+		order = Order(cart_id = cart_id  ,user_id =request.user.id  )
+    	order.save()
+    	return render(request,"order.html" ,{'upObj': order})
+   return HttpResponse("Out of stock")
 
 def order_view(request):
     # uObj = UserProile.objects.get(user__username = request.user)
