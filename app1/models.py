@@ -10,6 +10,11 @@ class Profile(models.Model):
     Nnikename=models.CharField(max_length=32)
     Adhaar_card_No = models.IntegerField()    
     Birth_Date= models.DateTimeField()
+    address = models.CharField(max_length=500, default='Indore Madhya Pradesh ')
+    pincode = models.IntegerField(default=0)
+    city=models.CharField(max_length=200,default= 'Indore ')
+    state=models.CharField(max_length=300,default='Madhya Pradesh')
+
 
 class product(models.Model):
     user_name = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -19,7 +24,8 @@ class product(models.Model):
     created_at = models.DateTimeField(default =timezone.now)
     Descreption =models.CharField(max_length=100, default=' ')
     updated_at = models.DateTimeField(default =timezone.now)
-    comment =  models.CharField(max_length=100, default=' ')
+    comment =  models.CharField(max_length=100,)
+    quantity = models.IntegerField(default=0)
 
 
 class UserRole(models.Model):
@@ -48,7 +54,18 @@ class Order( models.Model ):
     order_date = models.DateField(auto_now=True)
     amt_status = models.CharField(max_length = 200)
 
-    
+
+class comment_buyer( models.Model ):
+    comment = models.CharField(max_length=800)
+    user = models.ForeignKey(User, on_delete=models.CASCADE )
+    product = models.ForeignKey( product, models.CASCADE ,  related_name = 'p_comment' )
+
+    def __str__(self):
+        return self.comment
+
+
+
+        
 
 
 

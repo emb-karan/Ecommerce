@@ -17,6 +17,22 @@
     <button type="button" class="btn btn-outline-success">
         <a href="{% url 'order_see' %}" style="text-decoration: none">Order details</a>
     </button> 
+    <div><button type="button" class="btn btn-outline-success">
+        <a href="{% url 'profile' %}" style="text-decoration: none">Profile</a>
+    </button>
+
+    <div><button type="button" class="btn btn-outline-success">
+        <a href="{% url 'commentsee' %}" style="text-decoration: none">see all aur customer reviews</a>
+    </button>
+
+    <button type="button" class="btn btn-outline-success logout">
+        <a href="{% url 'next_user' %}" style="text-decoration: none">Profile Details</Details></a>
+    </button><br> <br>
+
+    <button type="button" class="btn btn-outline-success logout">
+        <a href="{% url 'update_pro' %}" style="text-decoration: none">Update Profile </Details></a>
+    </button><br> <br>
+
 
 
     <div class="row">
@@ -31,20 +47,10 @@
                 <div class="card-body">{{ i.Product_Price }}</div> 
                 
                 <div class="card-footer">{{ i.Descreption }}</div>
-                
-              
-                <textarea rows="4" cols="50" name="comment" form="usrform"></textarea>  
-
-
+            
                 <input type="submit" value="Add To Cart" >
 
-              </div> 
-
-
-         
-  
-           
-     
+              </div>     
     </div>
     <input type="hidden" id="custId" name="Product_Name" value="{{ i.Product_Name | upper}}">
     <input type="hidden" id="custId" name="Product_Price" value="{ i.Product_Price }}">
@@ -53,7 +59,16 @@
     <input type="hidden" id="custId" name="id" value="{{ i.id }}">
    
 </form>
-    {% endfor %}
+<form action="{% url 'commentbuyer1' %}" method="POST">
+    {% csrf_token %} 
+    <input type="textarea" rows="4" cols="50" name="comment1">
+    <input type="hidden" id="custId" name="product_id" value="{{ i.id }}">
+    <button type="submit" >Comment </button>
+
+</form>
+{% endfor %}
+
+
 
     
 </body>

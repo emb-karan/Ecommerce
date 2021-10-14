@@ -8,6 +8,7 @@
 <form method="POST" action="{% url 'buyer_cart' %}" class="post-form">  
         {% csrf_token %}  
         {{ form.as_p }}  
+        <input type="hidden" id="custId" name="catId" value="id">
         <button type="submit" class="save btn btn-default">Save</button>  
     </form>  
 </body>  

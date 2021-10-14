@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% for i in a %}
+{{i.Product_Name}}<br>
+{{i.Product_Price}}<br>
+        {% for i in i.p_comment.all %}
+            {{ i.comment }}<br>
+        {% endfor %}    
+
+{% endfor %}
+    
+</body>
+</html>

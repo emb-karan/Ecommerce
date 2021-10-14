@@ -29,6 +29,27 @@
             <div class="card col-sm-4" style="padding-bottom: 100px;">
                 <div class="card-header">{{ i.cart.descreption}}</div>
             </div>
+            <div class="card col-sm-4" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.user.username}}</div>
+            </div>
+            <div class="card col-sm-4" style="padding-bottom: 100px;">
+                <div class="card-header">{{ i.user.first_name}}</div>
+            </div>
+            {% for i in profile_b %}
+                {{ i.Nnikename }}<br>
+                {{ i.Adhaar_card_No }}<br>
+                {{ i.pincode }}<br>
+                {{ i.city }}<br>
+                {{ i.state }}<br>
+                {{ i.address }}<br>
+
+                 
+            {% endfor %}
+            <button  ><a href="{% url 'oredre_del' id=i.id %}" >
+                Cancel Oredr 
+            </a> 
+            </button>
+
     </div>
     <hr>
     {% endfor %}       

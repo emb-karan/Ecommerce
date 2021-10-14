@@ -31,7 +31,15 @@
                             <h6 class="text-muted">{{i.Birth_Date}}</h6>	
                         </div>
                     </div>
-    
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">pincode   </p>
+                            <h6 class="text-muted">{{ i.pincode }}</h6>	
+                        </div>
+                    </div>
+                    <h3> {{ i.city }} </h3><br>
+                    <h3> {{ i.state }} </h3><br>
+                    <h3> {{ i.address }} </h3><br>
                 {% endfor %}		
             </form>
         {% endblock %} 

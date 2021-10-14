@@ -1,19 +1,26 @@
 from django import forms
 from .models import product,Cart
+from django.core.exceptions import ValidationError
+
 
 
 class Login_user(forms.Form):
     email_user=forms.EmailField()
     password_user=forms.CharField()
+    # def clean(self):
+    #     if wrong_credentiels():
+    #         raise ValidationError("username pwd didn't match")        
 
 
 class Product(forms.ModelForm):
     class Meta:
         model = product
         fields = "__all__"
+
+    
     
     def clean_Product_Name(self):
-        return self.cleaned_data["Product_Name"].upper()    
+        return self.cleaned_data["Product_Name"].upper()        
 
 
     
@@ -36,6 +43,10 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Cart
         fields = "__all__"
+    
+    def clean_product_id(self):
+        return self.cleaned_data["Product_Name"].upper()  
+       
 
 
 
